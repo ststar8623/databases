@@ -24,14 +24,14 @@ app.use('/classes', router);
 // Serve the client files
 app.use(express.static(__dirname + '/../client'));
 
-app.post('/classes/messages', function(req,res) {
-  console.log('postin: ', req);
-  res.send('posting' + req.body);
-});
+// app.post('/classes/messages', function(req, res) {
+//   console.log('postin: ', req);
+//   res.send('posting' + req.body);
+// });
 
-app.get('/classes/users', function(req,res) {
-  res.send('getting' + req.query);
-});
+// app.get('/classes/users', function(req, res) {
+//   res.send('getting' + req.query);
+// });
 
 // If we are being run directly, run the server.
 if (!module.parent) {

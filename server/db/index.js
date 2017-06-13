@@ -19,9 +19,9 @@ connection.connect(err => {
   console.log('connected as id ' + connection.threadId);
 });
 
-connection.query('SELECT * FROM MESSAGES', function(err, rows) {
-  if (err) throw err;
+// connection.query('SELECT * FROM MESSAGES', function(err, rows) {
+//   if (err) { throw err; }
 
-  console.log('Data received from Db: \n');
-  console.log(rows);
-})
+//   console.log('Data received from Db: \n');
+//   console.log(rows);
+// });
