@@ -35,7 +35,14 @@ CREATE TABLE `rooms` (
 ALTER TABLE `messages` ADD FOREIGN KEY (user_id) REFERENCES `users` (id);
 ALTER TABLE `messages` ADD FOREIGN KEY (room_id) REFERENCES `rooms` (id);
 
-
+insert into users (name) values ('steven');
+insert into users (name) values ('peter');
+insert into users (name) values ('kenly');
+insert into rooms (roomname) values ('hrsf78');
+insert into rooms (roomname) values ('hrsf77');
+insert into messages (message, user_id, room_id) values ('hi peter', 1, 1);
+insert into messages (message, user_id, room_id) values ('hi kenly', 2, 1);
+insert into messages (message, user_id, room_id) values ('hi steven', 3, 2);
 /*  Execute this file from the command line by typing:
  *    mysql -u root < server/schema.sql
  *  to create the database and the tables.*/
