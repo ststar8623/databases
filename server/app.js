@@ -25,6 +25,7 @@ app.use('/classes', router);
 app.use(express.static(__dirname + '/../client'));
 
 app.post('/classes/messages', function(req,res) {
+  console.log('postin: ', req);
   res.send('posting' + req.body);
 });
 

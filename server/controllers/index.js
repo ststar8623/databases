@@ -4,7 +4,7 @@ module.exports = {
   messages: {
     // a function which handles a get request for all messages
     get: function (req, res) {
-
+      console.log('Messages Body: ', req.body);
     }, 
     // a function which handles posting a message to the database
     post: function (req, res) {
