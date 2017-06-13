@@ -11,7 +11,7 @@ CREATE TABLE `messages` (
   objectId INTEGER AUTO_INCREMENT,
   message VARCHAR(255),
   user_id INTEGER,
-  room_id INTEGER,
+  room VARCHAR(25),
   PRIMARY KEY (objectId)
 );
 
@@ -24,25 +24,14 @@ CREATE TABLE `users` (
   PRIMARY KEY (id)
 );
 
-DROP TABLE IF EXISTS rooms;
-
-CREATE TABLE `rooms` (
-  id INTEGER AUTO_INCREMENT,
-  roomname VARCHAR(25),
-  PRIMARY KEY (id)
-);
-
 ALTER TABLE `messages` ADD FOREIGN KEY (user_id) REFERENCES `users` (id);
-ALTER TABLE `messages` ADD FOREIGN KEY (room_id) REFERENCES `rooms` (id);
 
 insert into users (name) values ('steven');
 insert into users (name) values ('peter');
 insert into users (name) values ('kenly');
-insert into rooms (roomname) values ('hrsf78');
-insert into rooms (roomname) values ('hrsf77');
-insert into messages (message, user_id, room_id) values ('hi peter', 1, 1);
-insert into messages (message, user_id, room_id) values ('hi kenly', 2, 1);
-insert into messages (message, user_id, room_id) values ('hi steven', 3, 2);
+insert into messages (message, user_id, room) values ('hi peter', 1, 'hr78');
+insert into messages (message, user_id, room) values ('hi kenly', 2, 'hr78');
+insert into messages (message, user_id, room) values ('hi steven', 3, 'hr77');
 /*  Execute this file from the command line by typing:
  *    mysql -u root < server/schema.sql
  *  to create the database and the tables.*/
