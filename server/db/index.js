@@ -5,7 +5,6 @@ var mysql = require('mysql');
 // and to the database "chat".
 
 var connection = mysql.createConnection({
-  host: 'localhost',
   user: 'root',
   password: '',
   database: 'chat'
@@ -19,11 +18,24 @@ connection.connect(err => {
   console.log('connected as id ' + connection.threadId);
 });
 
-// connection.selectMessage('SELECT * FROM MESSAGES', function(err, rows) {
-//   if (err) { throw err; }
+connection.selectMessage = function(query, callback) {
+  let queryString = 'select * from messages';
+  connection.query(queryString, (err, rows, field) => {
+    if (err) throw err;
+    console.log('Query result: ', rows);
+    callback(rows);
+  });
+};
 
-//   console.log('Data received from Db: \n');
-//   console.log(rows);
-// });
+connection.insertMessage = function(query) {
+  let queryString = 'insert into messages (message, user_id, room) values (${data.message}, ${data.user_id}, ${data.room})';
+  connection.query(queryString, (err, rows, field) => {
+    if (err) {
+      console.log('messages model post error ', err);
+    } else {
+      console.log('model message post ', rows);
+    }
+  });
+};
 
-module.exports.connection = connection;
+module.exports = connection;
