@@ -1,3 +1,24 @@
+// var Sequelize = require('Sequelize');
+// var orm = new Sequelize('chat', 'root', '');
+
+// var User = orm.define('User', {
+//   username: Sequelize.STRING
+// });
+
+// var Message = orm.define('Message', {
+//   text: Sequelize.STRING,
+//   roomname: Sequelize.STRING
+// });
+
+// User.hasMany(Message);
+// Message.belongsTo(User);
+
+// User.sync();
+// Message.sync();
+
+// exports.User = User;
+// exports.Message = Message;
+
 var mysql = require('mysql');
 
 // Create a database connection and export it from this file.
@@ -10,32 +31,6 @@ var connection = mysql.createConnection({
   database: 'chat'
 });
 
-connection.connect(err => {
-  if (err) {
-    console.error('error connecting: ' + err.stack);
-    return;
-  }
-  console.log('connected as id ' + connection.threadId);
-});
-
-connection.selectMessage = function(query, callback) {
-  let queryString = 'select * from messages';
-  connection.query(queryString, (err, rows, field) => {
-    if (err) throw err;
-    console.log('Query result: ', rows);
-    callback(rows);
-  });
-};
-
-connection.insertMessage = function(query) {
-  let queryString = 'insert into messages (message, user_id, room) values (${data.message}, ${data.user_id}, ${data.room})';
-  connection.query(queryString, (err, rows, field) => {
-    if (err) {
-      console.log('messages model post error ', err);
-    } else {
-      console.log('model message post ', rows);
-    }
-  });
-};
+connection.connect();
 
 module.exports = connection;
